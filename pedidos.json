@@ -1,0 +1,57 @@
+{
+    "pedidos": [
+        {
+            "año": 21,
+            "mes": 10,
+            "dia": 22,
+            "hs-confirmado":"2:10hs",
+            "hs-asignado":"2:20hs",
+            "hs-entregado":null,
+            "id": 1,
+            "dir": "italia 15",
+            "wpp": 2996588098,
+            "estado":"asignado",
+            "repartidor":"lucas",
+            "items": [
+                {
+                    "cant": 1,
+                    "nombre": "fernet",
+                    "precio": 800
+                },{
+                    "cant": 2,
+                    "nombre": "coca",
+                    "precio": 500
+                },{
+                    "cant": 1,
+                    "nombre": "pucho",
+                    "precio": 300
+                }
+            ],
+            "total": 800
+        },        {
+            "año": 21,
+            "mes": 10,
+            "dia": 22,
+            "hs-confirmado":"2:12hs",
+            "hs-asignado":"2:20hs",
+            "hs-entregado":null,
+            "id": 2,
+            "dir": "av arg 502",
+            "wpp": 2996732139,
+            "estado":"confirmado",
+            "repartidor":null,
+            "items": [
+                {
+                    "cant": 1,
+                    "nombre": "quilmes",
+                    "precio": 800
+                },{
+                    "cant": 1,
+                    "nombre": "sernova",
+                    "precio": 600
+                }
+            ],
+            "total": 800
+        }
+    ]
+}

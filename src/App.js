@@ -3,33 +3,34 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Tasks from './components/Tasks'
+import Pedidos from './components/Pedidos'
 import AddTask from './components/AddTask'
 import About from './components/About'
 
 const App = () => {
   const [showAddTask, setShowAddTask] = useState(false)
-  const [tasks, setTasks] = useState([])
+  const [pedidos, setPedidos] = useState([])
 
   useEffect(() => {
     const getTasks = async () => {
-      const tasksFromServer = await fetchTasks()
-      setTasks(tasksFromServer)
+      const tasksFromServer = await obtenerPedidos()
+      setPedidos(tasksFromServer)
     }
 
     getTasks()
   }, [])
 
-  // Fetch Tasks
-  const fetchTasks = async () => {
-    const res = await fetch('http://localhost:5000/tasks')
+  // Fetch pedidos
+  const obtenerPedidos = async () => {
+    const res = await fetch('http://localhost:5000/pedidos')
     const data = await res.json()
 
     return data
   }
 
-  // Fetch Task
-  const fetchTask = async (id) => {
-    const res = await fetch(`http://localhost:5000/tasks/${id}`)
+  // Fetch pedido
+  const obtenerPedido = async (id) => {
+    const res = await fetch(`http://localhost:5000/pedidos/${id}`)
     const data = await res.json()
 
     return data
@@ -37,7 +38,7 @@ const App = () => {
 
   // Add Task
   const addTask = async (task) => {
-    const res = await fetch('http://localhost:5000/tasks', {
+    const res = await fetch('http://localhost:5000/pedidos', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -47,30 +48,27 @@ const App = () => {
 
     const data = await res.json()
 
-    setTasks([...tasks, data])
+    setPedidos([...pedidos, data])
 
-    // const id = Math.floor(Math.random() * 10000) + 1
-    // const newTask = { id, ...task }
-    // setTasks([...tasks, newTask])
   }
 
   // Delete Task
   const deleteTask = async (id) => {
-    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+    const res = await fetch(`http://localhost:5000/pedidos/${id}`, {
       method: 'DELETE',
     })
     //We should control the response status to decide if we will change the state or not.
     res.status === 200
-      ? setTasks(tasks.filter((task) => task.id !== id))
+      ? setPedidos(pedidos.filter((task) => task.id !== id))
       : alert('Error Deleting This Task')
   }
 
   // Toggle Reminder
   const toggleReminder = async (id) => {
-    const taskToToggle = await fetchTask(id)
+    const taskToToggle = await obtenerPedido(id)
     const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder }
 
-    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+    const res = await fetch(`http://localhost:5000/pedidos/${id}`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json',
@@ -80,8 +78,8 @@ const App = () => {
 
     const data = await res.json()
 
-    setTasks(
-      tasks.map((task) =>
+    setPedidos(
+      pedidos.map((task) =>
         task.id === id ? { ...task, reminder: data.reminder } : task
       )
     )
@@ -99,12 +97,10 @@ const App = () => {
           exact
           render={(props) => (
             <>
-              {showAddTask && <AddTask onAdd={addTask} />}
-              {tasks.length > 0 ? (
-                <Tasks
-                  tasks={tasks}
-                  onDelete={deleteTask}
-                  onToggle={toggleReminder}
+              <p> vamo a hacer cagadas</p>
+              {pedidos.length > 0 ? (
+                <Pedidos
+                  pedidos={pedidos}
                 />
               ) : (
                 'No Tasks To Show'

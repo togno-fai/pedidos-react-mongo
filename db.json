@@ -1,22 +1,44 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "text": "Doctors Appointment",
-      "day": "Feb 5th at 2:30pm",
-      "reminder": true
-    },
-    {
       "text": "hace algo",
       "day": "en algun momento",
-      "reminder": false,
-      "id": 3
+      "reminder": true,
+      "id": 3,
+      "dir": "italia 15",
+      "num": 2996588098,
+      "items": "toro y pomelo",
+      "total": 800
     },
     {
       "text": "una tarea",
       "day": "un dia",
       "reminder": false,
-      "id": 4
+      "id": 4,
+      "dir": "av arg 500",
+      "num": 2996253216,
+      "items": "alto jager",
+      "total": 3000
+    },
+    {
+      "text": "una tarea",
+      "day": "un dia",
+      "reminder": false,
+      "id": 5,
+      "dir": "av arg 501",
+      "num": 2996253216,
+      "items": "alto jager",
+      "total": 3000
+    },
+    {
+      "text": "una tarea",
+      "day": "un dia",
+      "reminder": false,
+      "id": 5,
+      "dir": "av arg 502",
+      "num": 2996253216,
+      "items": "alto jager",
+      "total": 3000
     }
   ]
 }
